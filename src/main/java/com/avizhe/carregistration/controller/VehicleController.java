@@ -35,8 +35,8 @@ public class VehicleController extends AbstractController<Vehicle, VehicleDto, V
     }
 
 
-    @PostMapping("/example/{ascending}")
-    public List<VehicleDto> getAllByExample(@PathVariable boolean ascending, @RequestParam String sortBy, @RequestBody Vehicle vehicle){
+    @PostMapping("/example")
+    public List<VehicleDto> getAllByExample(@RequestParam String sortBy, @RequestParam boolean ascending, @RequestBody Vehicle vehicle){
 
         return converter.convertEntity(service.findAll(vehicle, sortBy, ascending));
     }

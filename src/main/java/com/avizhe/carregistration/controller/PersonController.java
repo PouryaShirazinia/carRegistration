@@ -33,8 +33,8 @@ public class PersonController extends AbstractController<Person, PersonDto, Pers
         service.delete(id);
     }
 
-    @PostMapping("/example/{ascending}")
-    public List<PersonDto> getAllByExample(@PathVariable boolean ascending, @RequestParam String sortBy, @RequestBody Person person){
+    @PostMapping("/example")
+    public List<PersonDto> getAllByExample(@RequestParam String sortBy, @RequestParam boolean ascending, @RequestBody Person person){
 
         return converter.convertEntity(service.findAll(person, sortBy, ascending));
     }
