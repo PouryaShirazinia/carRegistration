@@ -34,9 +34,9 @@ public class PersonController extends AbstractController<Person, PersonDto, Pers
     }
 
     @PostMapping("/example/{ascending}")
-    public List<PersonDto> getAllByExample(@PathVariable boolean ascending, @RequestBody Person person){
+    public List<PersonDto> getAllByExample(@PathVariable boolean ascending, @RequestParam String sortBy, @RequestBody Person person){
 
-        return converter.convertEntity(service.findAll(person, ascending));
+        return converter.convertEntity(service.findAll(person, sortBy, ascending));
     }
 
 }

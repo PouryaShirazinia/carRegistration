@@ -31,9 +31,9 @@ public abstract class AbstractService<E extends AbstractEntity,  R extends JpaRe
         repository.deleteById(id);
     }
 
-    public List<E> findAll(E e , boolean ascending){
+    public List<E> findAll(E e , String sortBy, boolean ascending){
 
-        return repository.findAll(Example.of(e, ExampleMatcher.matchingAll()) ,ascending ? Sort.by("sortBy").ascending() : Sort.by("sortBy").descending());
+        return repository.findAll(Example.of(e, ExampleMatcher.matchingAll()) ,ascending ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending());
     }
 
 }
