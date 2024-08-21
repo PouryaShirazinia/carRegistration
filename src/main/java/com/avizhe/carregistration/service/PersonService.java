@@ -2,10 +2,8 @@ package com.avizhe.carregistration.service;
 
 import com.avizhe.carregistration.exeption.ServiceException;
 import com.avizhe.carregistration.model.entity.Person;
-import com.avizhe.carregistration.model.entity.Vehicle;
 import com.avizhe.carregistration.repository.PersonRepository;
 import jakarta.validation.Valid;
-import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -33,7 +31,7 @@ public class PersonService extends AbstractService<Person, PersonRepository>{
         try {
             return insert(person);
         }catch (ObjectOptimisticLockingFailureException exception){
-            throw new ServiceException("Row_updated_by_another_transaction");
+            throw new ServiceException("ROW_UPDATED_BY_ANOTHER_TRANSACTION");
         }
     }
 
