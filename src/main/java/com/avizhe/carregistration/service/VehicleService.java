@@ -9,8 +9,10 @@ import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 public class VehicleService extends AbstractService<Vehicle, VehicleRepository>{
 
     private final PersonService personService;
