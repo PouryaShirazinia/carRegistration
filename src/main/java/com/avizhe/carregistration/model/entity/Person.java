@@ -20,8 +20,7 @@ public class Person extends AbstractEntity {
     @Column(unique = true, length = 10 )
     @Pattern(regexp = "^\\d{10}$" , message = "NATIONAL_ID_LENGTH")
     private String nationalId;
-
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Vehicle> vehicle;
+    private List<Vehicle> vehicles;
 
 }

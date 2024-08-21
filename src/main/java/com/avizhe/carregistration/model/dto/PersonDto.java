@@ -15,6 +15,6 @@ public class PersonDto {
     private String firstName;
     private String lastName;
     private String nationalId;
-    private List<VehicleDto> vehicle;
+    private List<VehicleDto> vehicleDtos;
 
 }

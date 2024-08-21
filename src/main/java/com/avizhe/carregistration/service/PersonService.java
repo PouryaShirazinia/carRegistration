@@ -2,8 +2,10 @@ package com.avizhe.carregistration.service;
 
 import com.avizhe.carregistration.exeption.ServiceException;
 import com.avizhe.carregistration.model.entity.Person;
+import com.avizhe.carregistration.model.entity.Vehicle;
 import com.avizhe.carregistration.repository.PersonRepository;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -40,7 +42,7 @@ public class PersonService extends AbstractService<Person, PersonRepository>{
     public void delete(String id) throws ServiceException {
         Person person = getById(id);
 
-        if (person.getVehicle() == null || person.getVehicle().isEmpty()){
+        if (person.getVehicles().isEmpty() || person.getVehicles() == null){
             super.delete(id);
         }else {
             throw new ServiceException("PERSON_HAS_VEHICLE");
@@ -54,4 +56,5 @@ public class PersonService extends AbstractService<Person, PersonRepository>{
         return repository.findById(id)
                 .orElseThrow(() -> new ServiceException("PERSON_NOT_FOUND"));
     }
+
 }
